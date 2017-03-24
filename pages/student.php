@@ -2,27 +2,35 @@
 <html>
 <head>
 	<title></title>
+  <link rel="stylesheet" type="text/css" href="../library/bootstrap.min.css">
+
+<link href="../library/jquery-accordion-menu.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="../dist/css/nav.css">
+
+
 </head>
 <body>
 <?php
-  $dbc=mysqli_connect('localhost','root','57317019','db_bighw')
-  or die("Error connecting to MySQL server");
-  $username=$_POST['username'];
-  $password=$_POST['password'];
-  $query="INSERT INTO student_account(Susername,Spassword) Values('$username','$password')";
-  mysqli_query($dbc,$query)
-  or die("Error add");
-  mysqli_close($dbc);
-
-
-
-
+require("common/nav.php");
 
 ?>
 
 
+<div class="info">
+<h2 >登录信息</h2>
+<p>你好  
+  <?php
+  $username=$_COOKIE['username'];
+  
+   echo  $username;
+  
 
+  ?>，
+ 欢迎来到学籍管理系统！
 
-
+</p>
+</div>
 </body>
 </html>
+
