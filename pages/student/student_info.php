@@ -10,13 +10,46 @@
 </head>
 <body>
 <?php
-require("../common/nav.php");
+require_once("../common/nav.php");
 
 ?>
-<?php
 
-echo "ha";
-?>
+
+
+<div class="info">
+<h2 >个人信息</h2>
+<p>
+  <?php
+
+
+   $dbc=mysqli_connect('localhost','root','57317019','db_bighw')
+  or die("Error connecting to MySQL server");
+  $number=$_COOKIE['number'];
+  $query="SELECT student.Sno,student.Sname,student.Ssex,student.Sdept,student.Smajor FROM student_account,student Where student.Sno=$number";
+  $data=mysqli_query($dbc,$query)
+  or die("Error ");
+  while($row=mysqli_fetch_array($data)){
+    
+    echo  $row['Sno'];
+    echo  $row['Snumber'];
+    echo  $row['Ssex'];
+    echo  $row['Sdept'];
+    echo  $row['Smajor'];
+    break;
+     
+    
+  }
+
+
+  mysqli_close($dbc);
+
+   
+  
+
+  ?>，
+
+
+</p>
 
 </body>
 </html>

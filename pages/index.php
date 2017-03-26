@@ -23,7 +23,8 @@
 
   while($row=mysqli_fetch_array($data)){
      setcookie('number',$row['Snumber']);
-    require("student.php");
+    
+     header('Location: http://localhost/db_BigHW/pages/student/student.php');
     
   }
 

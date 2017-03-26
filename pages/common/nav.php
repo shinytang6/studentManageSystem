@@ -7,8 +7,8 @@
 		<div class="jquery-accordion-menu-header" id="form"></div>
 		<ul id="demo-list">
 		 
-		   <li class="active"><a href="../student.php">我的首页</a></li>
-			<li><a href="student/student_info.php">个人信息</a></li>
+		   <li class="active"><a href="student.php">我的首页</a></li>
+			<li><a href="student_info.php">个人信息</a></li>
 			<li><a href="#"> 我的专业</a>
 			
 			<li><a href="#">我的课程</a></li>
