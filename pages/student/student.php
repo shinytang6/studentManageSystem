@@ -17,6 +17,10 @@ require_once(dirname(__FILE__) ."/../common/nav.php");
 ?>
 
 
+
+
+
+
 <div class="info">
 <h2 >登录信息</h2>
 <p>你好  
