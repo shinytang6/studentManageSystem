@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="../../library/bootstrap.min.css">
  <link rel="stylesheet" type="text/css" href="../../dist/css/nav.css">
  <link rel="stylesheet" type="text/css" href="../../dist/css/student_modify.css">
-
+ 
 
 </head>
 <body>
@@ -31,6 +31,7 @@ require_once("../common/nav.php");
   <br>
   <input type="submit" name="submit" id="submit" class="btn btn-primary" >
   </form>  
+  <p style="color: red;font-size: 20px;margin-left: 540px;margin-top: 30px;">
   <?php
 
 
@@ -39,14 +40,15 @@ require_once("../common/nav.php");
   $number=$_COOKIE['number'];
   $oldpw=$_POST['oldpw'];
   $newpw=$_POST['newpw'];
-
+ if(isset($_POST['submit'])){
   $query="UPDATE  student_account SET Spassword = '$newpw'   where Snumber=$number and Spassword='$oldpw'; "; 
+ 
   $data=mysqli_query($dbc,$query)
      or die("Error ");
-  if(isset($_POST['submit'])){
    
 
-   if(mysqli_affected_rows()){
+  
+   if(mysqli_affected_rows($dbc)){
   
     
      echo "修改成功";
@@ -56,7 +58,7 @@ require_once("../common/nav.php");
 
 
   else
-    echo "Error user";
+    echo "密码错误，请重新输入";
   
 
  }
@@ -67,7 +69,7 @@ require_once("../common/nav.php");
 
   ?>
 
-
+</p>
 
 
 </body>

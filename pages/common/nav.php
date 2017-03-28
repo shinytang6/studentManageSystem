@@ -12,7 +12,7 @@
 			<li><a href="student_major.php"> 我的专业</a>
 			
 			<li><a href="student_course.php">我的课程</a></li>
-			
+			<li><a href="student_mark.php">成绩查询</a></li>
 			<li><a href="student_modify.php">修改设定</a></li>
 			<li><a href="#">退出登录 </a></li>
 		   

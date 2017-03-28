@@ -25,6 +25,9 @@ require_once("../common/nav.php");
     <tr>
       <th>课程名</th>
       <th>教师</th>
+      <th>地点</th>
+      <th>时间</th>
+      <th>学期</th>
     </tr>
   </thead>
   <tbody>
@@ -34,7 +37,7 @@ require_once("../common/nav.php");
    $dbc=mysqli_connect('localhost','root','57317019','db_bighw')
   or die("Error connecting to MySQL server");
   $number=$_COOKIE['number'];
-  $query="SELECT course.Cname,course.Cteacher FROM student natural join course_student natural join  course where student.Sno=$number; ";
+  $query="SELECT course.Cname,course.Cteacher,course.Csite,course.Ctime,course.Csemester FROM student natural join course_student natural join  course where student.Sno=$number; ";
 
   $data=mysqli_query($dbc,$query)
   or die("Error ");
@@ -44,7 +47,10 @@ require_once("../common/nav.php");
     echo  '
     <tr>
       <td>'.$row['Cname'].'</td>'.
-      '<td>'.$row['Cteacher'].'</td>';
+      '<td>'.$row['Cteacher'].'</td>'.
+      '<td>'.$row['Csite'].'</td>'.
+      '<td>'.$row['Ctime'].'</td>'.
+      '<td>'.$row['Csemester'].'</td>';
 
      
     
@@ -60,7 +66,7 @@ require_once("../common/nav.php");
   ?>
  </tbody>
 </table>
-
+</div>
 
 
 </body>
