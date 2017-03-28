@@ -46,7 +46,7 @@
   or die("Error ");
 
   while($row=mysqli_fetch_array($data)){
-     setcookie('number',$row['Snumber']);
+     setcookie('Tnumber',$row['Tnumber']);
     
      header('Location: http://localhost/db_BigHW/pages/teacher/teacher.php');
     

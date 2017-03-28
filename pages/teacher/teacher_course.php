@@ -3,9 +3,10 @@
 <head>
 	<title></title>
 	<link href="../../library/jquery-accordion-menu.css" rel="stylesheet" type="text/css" />
- <link rel="stylesheet" type="text/css" href="../../library/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../../dist/css/nav.css">
+  <link rel="stylesheet" type="text/css" href="../../library/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="../../dist/css/nav.css">
  <link rel="stylesheet" type="text/css" href="../../dist/css/student.css">
+
 
 </head>
 <body>
@@ -14,16 +15,17 @@ require_once("../common/teacher_nav.php");
 
 ?>
 
+
+
 <div class="info">
 
 <table class="table table-striped">
-  <h2>个人信息</h2>
+  <h2>开设课程</h2>
   <thead>
     <tr>
-      <th>姓名</th>
-      <th>性别</th>
-      <th>所在系</th>
-  
+      <th>课程号</th>
+      <th>课程名</th>
+      <th>选课学生</th>
     </tr>
   </thead>
   <tbody>
@@ -33,26 +35,24 @@ require_once("../common/teacher_nav.php");
    $dbc=mysqli_connect('localhost','root','57317019','db_bighw')
   or die("Error connecting to MySQL server");
   $number=$_COOKIE['Tnumber'];
- 
-  $query="SELECT teacher.Tname,teacher.Tsex,teacher.Tdept FROM teacher_account,teacher Where teacher.Tno=$number";
+  $Tname=$_COOKIE['Tname'];
+  $query="SELECT Cno,Cname,Sname FROM teacher natural join course_student natural join  course natural join student where teacher.Tno=$number and Cteacher='$Tname'; ";
+
   $data=mysqli_query($dbc,$query)
   or die("Error ");
   while($row=mysqli_fetch_array($data)){
-    setcookie('Tname',$row['Tname']);
   
-
-
     echo "<br>";
-    echo  '<tr>
-    <td>'.$row['Tname'].'</td>'.
-    '<td>'.$row['Tsex'].'</td>'.
-    '<td>'.$row['Tdept'].'</td>';
+    echo  '
+    <tr>
+      <td>'.$row['Cno'].'</td>'.
+      '<td>'.$row['Cname'].'</td>'.
+      '<td>'.$row['Sname'].'</td>';
 
-    break;
- 
      
     
   }
+ 
 
 
   mysqli_close($dbc);
@@ -61,10 +61,9 @@ require_once("../common/teacher_nav.php");
   
 
   ?>
-
  </tbody>
 </table>
-
+</div>
 
 
 </body>

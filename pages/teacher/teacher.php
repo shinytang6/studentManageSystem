@@ -13,7 +13,7 @@
 <body>
 <?php
 require_once(dirname(__FILE__) ."/../common/teacher_nav.php");
-s
+
 ?>
 
 
