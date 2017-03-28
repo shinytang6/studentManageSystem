@@ -14,7 +14,7 @@
 </head>
 <body>
 <?php
-require_once("../common/nav.php");
+require_once("../common/student_nav.php");
 
 ?>
 
@@ -26,24 +26,25 @@ require_once("../common/nav.php");
 
   <h2>成绩查询</h2>
 <form action="<?php  echo $_SERVER['PHP_SELF'];  ?>" method="post">
-<select class="selectpicker " id="sel" name="grade" value="<?php echo $grade;  ?>">
-  <option>大一上</option>
+<select class="selectpicker " id="sel" name="semester" >
+  <option >大一上</option>
   <option>大一下</option>
   <option>大二上</option>
   <option>大二下</option>
   <option>大三上</option>
   <option>大三下</option>
-  <option>大四上</option>
+  <option >大四上</option>
   <option>大四下</option>
+  <option>所有学期</option>
 </select>
 
 
 
 
-  <div class="input-group col-md-3">
-       <input type="text" class="form-control" placeholder="请输入字段名" name="course" value="<?php echo $course;  ?>">
+  <span class="input-group col-md-3" >
+       <input type="text" class="form-control" placeholder="请输入课程名" name="course" value="<?php echo $course  ?>">
             
- </div>
+ </span>
   <button class="btn btn-info btn-search" name="submit">查找</button>
   </form>
 <div class="info">
@@ -70,20 +71,31 @@ require_once("../common/nav.php");
    $dbc=mysqli_connect('localhost','root','57317019','db_bighw')
   or die("Error connecting to MySQL server");
   $number=$_COOKIE['number'];
-  $grade=$_POST['grade'];
+  $semester=$_POST['semester'];
   $course=$_POST['course'];
-
+ // setcookie('semester',$semester);
+ // setcookie('course',$course);
  if(isset($_POST['submit'])){
+   
+     if($semester!='所有学期'){
 
-  if(!empty($grade) and !empty($course) ){
+        if(!empty($semester) and !empty($course) ){
         
-        $query="SELECT  Cno,Cname,Ccredit,Cmark from course_student natural join course natural join student  where Sno=$number and Csemester='$grade' and Cname='$course'"; 
-      }
-  if(empty($course) )
-        $query="SELECT  Cno,Cname,Ccredit,Cmark from course_student natural join course natural join student  where Sno=$number and Csemester='$grade'"; 
-  if(empty($grade) )
+             $query="SELECT  Cno,Cname,Ccredit,Cmark from course_student natural join course natural join student  where Sno=$number and Csemester='$semester' and Cname='$course'"; 
+          }
+        if(empty($course) )
+             $query="SELECT  Cno,Cname,Ccredit,Cmark from course_student natural join course natural join student  where Sno=$number and Csemester='$semester'"; 
+        if(empty($semester) )
+             $query="SELECT  Cno,Cname,Ccredit,Cmark from course_student natural join course natural join student  where Sno=$number  and Cname='$course'"; 
+        }
+     else{
+      if(empty($course) )
+         $query="SELECT  Cno,Cname,Ccredit,Cmark from course_student natural join course natural join student  where Sno=$number "; 
+      else
         $query="SELECT  Cno,Cname,Ccredit,Cmark from course_student natural join course natural join student  where Sno=$number  and Cname='$course'"; 
+     }
 
+ 
   $data=mysqli_query($dbc,$query)
      or die("Error ");
    

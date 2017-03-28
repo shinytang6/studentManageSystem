@@ -12,8 +12,8 @@
 </head>
 <body>
 <?php
-require_once(dirname(__FILE__) ."/../common/student_nav.php");
-
+require_once(dirname(__FILE__) ."/../common/teacher_nav.php");
+s
 ?>
 
 

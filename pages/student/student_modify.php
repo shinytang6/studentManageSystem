@@ -11,7 +11,7 @@
 </head>
 <body>
 <?php
-require_once("../common/nav.php");
+require_once("../common/student_nav.php");
 
 ?>
 

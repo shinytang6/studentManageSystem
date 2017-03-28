@@ -15,3 +15,15 @@ table{
 	margin-top: 50px;
 	padding-left: 10px;
 }
+form{
+	left: 320px;
+	position: relative;
+	width: 800px;
+}
+.input-group{
+    display: inline-block;
+    top: 13px;
+    width: 250px;
+   
+
+}
