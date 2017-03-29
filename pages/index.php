@@ -62,7 +62,31 @@
 
   }
 
+  
+  if("$user"=="administer"){
+    $query="SELECT Anumber,Ausername,Apassword FROM administer_account Where Ausername='$username'and Apassword='$password'";
+     
 
+
+  $data=mysqli_query($dbc,$query)
+  or die("Error ");
+
+  while($row=mysqli_fetch_array($data)){
+     setcookie('Anumber',$row['Anumber']);
+    
+     header('Location: http://localhost/db_BigHW/pages/administer/administer.php');
+    
+  }
+
+
+  mysqli_close($dbc);
+
+
+
+
+
+
+  }
 
 
 
