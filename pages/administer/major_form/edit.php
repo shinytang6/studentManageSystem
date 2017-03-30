@@ -1,6 +1,7 @@
 <?php
 $no =$_POST['number'] ;
-$name=$_POST['name'] ;
+$aname=$_POST['aname'] ;
+$mname=$_POST['mname'] ;
 $principal =$_POST['prin'] ;
 $contact=$_POST['con'] ;
 
@@ -8,7 +9,7 @@ $contact=$_POST['con'] ;
 
 
 <div class="edit_form">
-		<form action="academy_form/edit_process.php" method="post" style="left: 400px;top: 100px;position: absolute;width: 800px;">
+		<form action="major_form/edit_process.php" method="post" style="left: 400px;top: 100px;position: absolute;width: 800px;">
 		                     <div class="form-group">
 					<label class="control-label sr-only" for="ID_ic_no">编号</label>
 
@@ -20,15 +21,31 @@ $contact=$_POST['con'] ;
 													</div>
 				</div>
 							<div class="form-group">
-					<label class="control-label sr-only" for="ID_ic_name">名称</label>
+					<label class="control-label sr-only" for="ID_ic_aname">所属学院</label>
 
 					<div class="input-group">
-						<div class="input-group-addon">名称</div>
+						<div class="input-group-addon">所属学院</div>
 														<input readonly class="form-control" type="text"
-									   name="ic_name"
-									   value=<?php echo $name; ?> id="ID_ic_name">
+									   name="ic_aname"
+									   value=<?php echo $aname; ?> id="ID_ic_aname">
 													</div>
 				</div>
+                           
+
+                           <div class="form-group">
+					<label class="control-label sr-only" for="ID_ic_mname">专业</label>
+
+					<div class="input-group">
+						<div class="input-group-addon">专业</div>
+														<input class="form-control" type="text"
+									   name="ic_mname"
+									   value=<?php echo $mname; ?> id="ID_ic_mname">
+													</div>
+				</div>
+
+
+
+
 								<div class="form-group">
 					<label class="control-label sr-only" for="ID_ic_admin">负责人</label>
 
