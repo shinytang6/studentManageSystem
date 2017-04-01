@@ -36,7 +36,31 @@
 
       //删除按钮
       $(".del").click(function(){
-           alert("确定删除吗？")
+              var r=confirm("确认要删除吗");
+           if(r==true){  
+              
+               var no=$(this).parent().prev().prev().prev().prev().prev().html();
+
+               htmldel=$.ajax({
+                   url:"academy_form/del.php",
+                   type:"post",
+                   data:{ 
+                   number:no
+        
+                  },
+                   async:false,
+                   error : function(){ alert("error")},
+                   //调用成功后刷新页面
+                   success: function(){
+
+                      window.location.reload();
+
+
+                   }
+                });
+
+
+           }
 
       });
       
