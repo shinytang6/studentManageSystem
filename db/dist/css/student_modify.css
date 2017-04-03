@@ -1,0 +1,28 @@
+.info form{
+  margin-top: 100px;
+  margin-left: 450px;
+  font-size: 20px;
+
+
+}
+#oldpw,#newpw{
+	border-radius: 5px;
+	margin-left: 10px;
+	border: none;
+	outline: none;
+}
+
+.info form input{
+	margin-top: 20px;
+}
+#submit{
+	margin-left: 100px;
+	border-radius: 5px;
+	outline: none;
+	border :none;
+	width: 100px;
+	height: 40px;
+
+
+}
+

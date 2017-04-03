@@ -110,7 +110,7 @@ require_once("../common/administer_nav.php");
   or die("Error connecting to MySQL server");
   $Sdept=$_COOKIE['Sdept'];
   $query="SELECT * FROM academy";
-  echo '<script type="text/javascript">console.log(totalnums($query))</script>';
+
   $data=mysqli_query($dbc,$query)
   or die("Error ");
   while($row=mysqli_fetch_array($data)){
@@ -140,6 +140,8 @@ require_once("../common/administer_nav.php");
 
  </tbody>
 </table>
+
+
 
 </body>
 </html>

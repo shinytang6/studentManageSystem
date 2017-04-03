@@ -1,0 +1,16 @@
+body{background:#f0f0f0;}
+.content{width:260px; margin-top: 50px;}
+.info{
+   display: inline-block;
+  
+
+}
+.info h2{
+	 margin-left: 520px;
+}
+
+.info p{
+	 margin-left: 400px;
+	 font-size: 22px;
+	 margin-top: 50px;
+}

@@ -1,0 +1,29 @@
+
+
+
+h2{
+	 margin-left: 720px;
+}
+select{
+	display: inline;
+}
+.info div{
+  width: 100px;
+}
+table{
+	margin-left: 500px;
+	margin-top: 50px;
+	padding-left: 10px;
+}
+form{
+	left: 320px;
+	position: relative;
+	width: 800px;
+}
+.input-group{
+    display: inline-block;
+    top: 13px;
+    width: 250px;
+   
+
+}

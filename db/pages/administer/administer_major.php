@@ -13,16 +13,18 @@
      //编辑按钮
       $(".edit").click(function(){
         
-        var no=$(this).parent().prev().prev().prev().prev().html();
-        var academyName=$(this).parent().prev().prev().prev().html();
+        var no=$(this).parent().prev().prev().prev().prev().prev().html();
+        var academyName=$(this).parent().prev().prev().prev().prev().html();
+        var majorName=$(this).parent().prev().prev().prev().html();
         var principal=$(this).parent().prev().prev().html();
         var contact=$(this).parent().prev().html();
          htmledit=$.ajax({
-          url:"academy_form/edit.php",
+          url:"major_form/edit.php",
           type:"post",
           data:{ 
           number:no,
-          name:academyName,
+          aname:academyName,
+          mname:majorName,
           prin:principal,
           con:contact
           },
@@ -36,13 +38,14 @@
 
       //删除按钮
       $(".del").click(function(){
-              var r=confirm("确认要删除吗");
+        
+           var r=confirm("确认要删除吗");
            if(r==true){  
               
                var no=$(this).parent().prev().prev().prev().prev().prev().html();
 
                htmldel=$.ajax({
-                   url:"academy_form/del.php",
+                   url:"major_form/del.php",
                    type:"post",
                    data:{ 
                    number:no
@@ -62,19 +65,22 @@
 
            }
 
+
+
       });
       
 
       //添加按钮
        $(".add").click(function(){
           htmladd=$.ajax({
-          url:"academy_form/add.php",
+          url:"major_form/add.php",
           async:false,
           error : function(){ alert("error")},
         });
 
         $(".info").html(htmladd.responseText);
           });
+           
 
    });
 
@@ -90,12 +96,13 @@ require_once("../common/administer_nav.php");
 <div class="info">
 
 <table class="table table-striped">
-  <h2>学院信息</h2>
+  <h2>专业信息</h2>
   <a class="btn btn-primary add " style="margin-left: 566px;">添加</a>
   <thead>
     <tr>
       <th>编号</th>
-      <th>名称</th>
+      <th>所属学院</th>
+      <th>专业</th>
       <th>负责人</th>
       <th>联系电话</th>
       <th>操作</th>
@@ -109,8 +116,8 @@ require_once("../common/administer_nav.php");
    $dbc=mysqli_connect('localhost','root','57317019','db_bighw')
   or die("Error connecting to MySQL server");
   $Sdept=$_COOKIE['Sdept'];
-  $query="SELECT * FROM academy";
-  echo '<script type="text/javascript">console.log(totalnums($query))</script>';
+  $query="SELECT * FROM major";
+
   $data=mysqli_query($dbc,$query)
   or die("Error ");
   while($row=mysqli_fetch_array($data)){
@@ -119,6 +126,7 @@ require_once("../common/administer_nav.php");
     echo  '<tr>
     <td>'.$row['id'].'</td>'.
     '<td>'.$row['academyName'].'</td>'.
+    '<td>'.$row['majorName'].'</td>'.
     '<td>'.$row['principal'].'</td>'.
     '<td>'.$row['contact'].'</td>'.
     '<td>'.'<a class="btn edit " style="background-color:#eb9316;color:white">编辑</a>'.'<a class="btn btn-danger del">删除</a>'.'</td>';
@@ -140,6 +148,8 @@ require_once("../common/administer_nav.php");
 
  </tbody>
 </table>
+
+
 
 </body>
 </html>
