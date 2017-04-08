@@ -16,13 +16,17 @@
 
   //登录身份是学生
   if("$user"=="student"){
-     $query="SELECT Snumber,Susername,Spassword FROM student_account Where Susername='$username'and Spassword='$password'";
+     $query="SELECT Snumber,Susername,Spassword FROM student_account Where md5(Susername) LIKE md5('$username')and Spassword like md5('$password')";
      
 
 
   $data=mysqli_query($dbc,$query)
   or die("Error ");
+  //查询结果为空
+  if (mysql_num_rows($data) < 1){
+          header('Location: http://localhost/db_BigHW/index.html');
 
+     }
   while($row=mysqli_fetch_array($data)){
      setcookie('number',$row['Snumber']);
     
@@ -38,13 +42,18 @@
  //登录身份是老师
 
   if("$user"=="teacher"){
-    $query="SELECT Tnumber,Tusername,Tpassword FROM teacher_account Where Tusername='$username'and Tpassword='$password'";
+    $query="SELECT Tnumber,Tusername,Tpassword FROM teacher_account Where md5(Tusername)=md5('$username')and Tpassword=md5('$password')";
      
 
 
   $data=mysqli_query($dbc,$query)
   or die("Error ");
-
+  
+   //查询结果为空
+  if (mysql_num_rows($data) < 1){
+          header('Location: http://localhost/db_BigHW/index.html');
+         
+     }
   while($row=mysqli_fetch_array($data)){
      setcookie('Tnumber',$row['Tnumber']);
     
@@ -71,6 +80,11 @@
   $data=mysqli_query($dbc,$query)
   or die("Error ");
 
+   //查询结果为空
+  if (mysql_num_rows($data) < 1){
+          header('Location: http://localhost/db_BigHW/index.html');
+         
+     }
   while($row=mysqli_fetch_array($data)){
      setcookie('Anumber',$row['Anumber']);
     

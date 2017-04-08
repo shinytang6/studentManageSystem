@@ -6,8 +6,8 @@ $dbc=mysqli_connect('localhost','root','57317019','db_bighw')
   $edit_name=$_POST['ic_name'];
   $edit_admin=$_POST['ic_admin'];
   $edit_tel=$_POST['ic_tel'];
- 
-  $query="UPDATE academy SET principal='$edit_admin',contact='$edit_tel' where id = $edit_no";
+  $edit_address=$_POST['ic_address'];
+  $query="UPDATE academy SET principal='$edit_admin',contact='$edit_tel',address='$edit_address' where id = $edit_no";
   $data=mysqli_query($dbc,$query)
   or die("Error ");
   header('Location: http://localhost/db_BigHW/pages/administer/administer_academy.php');

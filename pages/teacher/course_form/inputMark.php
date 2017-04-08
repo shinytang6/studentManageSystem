@@ -37,7 +37,7 @@ setcookie("Cno",$cno);
   $number=$_COOKIE['Tnumber'];
   $Tname=$_COOKIE['Tname'];
 
-  $query="SELECT student.Sno,student.Sname,student.Ssex,student.Sdept,student.Sgrade FROM teacher natural join course_student natural join  course natural join student where Cno=$cno and Cname='$cname'  ORDER BY student.Sno";
+  $query="SELECT DISTINCT student.Sno,student.Sname,student.Ssex,student.Sdept,student.Sgrade FROM teacher natural join course_student natural join  course natural join student where Cno=$cno and Cname='$cname'  ORDER BY student.Sno";
 
   $data=mysqli_query($dbc,$query)
   or die("Error ");

@@ -3,7 +3,7 @@ $no =$_POST['number'] ;
 $name=$_POST['name'] ;
 $principal =$_POST['prin'] ;
 $contact=$_POST['con'] ;
-
+$address=$_POST['add'] ;
 ?>
 
 
@@ -48,6 +48,18 @@ $contact=$_POST['con'] ;
 														<input class="form-control" type="number"
 									   name="ic_tel"
 									   value=<?php echo $contact; ?> id="ID_ic_tel">
+													</div>
+				</div>
+
+
+				              <div class="form-group">
+					<label class="control-label sr-only" for="ID_ic_tel">地址</label>
+
+					<div class="input-group">
+						<div class="input-group-addon">地址</div>
+														<input class="form-control" type="text"
+									   name="ic_address" value=<?php echo $address; ?>
+									   id="ID_ic_address">
 													</div>
 				</div>
 										<div class="form-group">

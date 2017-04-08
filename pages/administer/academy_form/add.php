@@ -34,6 +34,17 @@
 									   id="ID_ic_tel">
 													</div>
 				</div>
+
+				              <div class="form-group">
+					<label class="control-label sr-only" for="ID_ic_tel">地址</label>
+
+					<div class="input-group">
+						<div class="input-group-addon">地址</div>
+														<input class="form-control" type="text"
+									   name="ic_address"
+									   id="ID_ic_address">
+													</div>
+				</div>
 										<div class="form-group">
 				<button class="btn btn-primary" type="submit" style="margin-left: 300px;width: 100px;">添加</button>
 			</div>

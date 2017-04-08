@@ -43,7 +43,6 @@ require_once("../common/student_nav.php");
   or die("Error ");
   while($row=mysqli_fetch_array($data)){
   
-    echo "<br>";
     echo  '
     <tr>
       <td>'.$row['Cname'].'</td>'.

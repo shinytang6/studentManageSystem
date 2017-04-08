@@ -24,6 +24,7 @@ require_once("../common/student_nav.php");
       <th>院系</th>
       <th>负责人</th>
       <th>联系方式</th>
+      <th>地址</th>
     </tr>
   </thead>
   <tbody>
@@ -33,7 +34,7 @@ require_once("../common/student_nav.php");
    $dbc=mysqli_connect('localhost','root','57317019','db_bighw')
   or die("Error connecting to MySQL server");
   $Sdept=$_COOKIE['Sdept'];
-  $query="SELECT academy.academyName,academy.principal,academy.contact FROM academy,student Where academy.academyName='$Sdept'";
+  $query="SELECT academy.academyName,academy.principal,academy.contact,academy.address FROM academy,student Where academy.academyName='$Sdept'";
 
   $data=mysqli_query($dbc,$query)
   or die("Error ");
@@ -42,7 +43,8 @@ require_once("../common/student_nav.php");
     echo  '<tr>
     <td>'.$row['academyName'].'</td>'.
     '<td>'.$row['principal'].'</td>'.
-    '<td>'.$row['contact'].'</td>';
+    '<td>'.$row['contact'].'</td>'.
+    '<td>'.$row['address'].'</td>';
     break;
  
 
@@ -71,6 +73,7 @@ require_once("../common/student_nav.php");
       <th>专业</th>
       <th>负责人</th>
       <th>联系方式</th>
+      <th>地址</th>
     </tr>
   </thead>
   <tbody>
@@ -81,7 +84,7 @@ require_once("../common/student_nav.php");
   or die("Error connecting to MySQL server");
   $Sdept=$_COOKIE['Sdept'];
   $Smajor=$_COOKIE['Smajor'];
-  $query="SELECT major.majorName,major.principal,major.contact FROM major,student Where major.majorName='$Smajor'";
+  $query="SELECT major.majorName,major.principal,major.contact,major.address FROM major,student Where major.majorName='$Smajor'";
 
   $data=mysqli_query($dbc,$query)
   or die("Error ");
@@ -90,7 +93,8 @@ require_once("../common/student_nav.php");
     echo  '<tr>
     <td>'.$row['majorName'].'</td>'.
     '<td>'.$row['principal'].'</td>'.
-    '<td>'.$row['contact'].'</td>';
+    '<td>'.$row['contact'].'</td>'.
+    '<td>'.$row['address'].'</td>';
     break;
  
 

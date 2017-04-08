@@ -102,7 +102,7 @@ require_once("../common/student_nav.php");
 
   while($row=mysqli_fetch_array($data)){
   
-    echo "<br>";
+   
     echo  '
     <tr>
       <td>'.$row['Cno'].'</td>'.

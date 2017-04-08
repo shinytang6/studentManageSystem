@@ -13,10 +13,11 @@
      //编辑按钮
       $(".edit").click(function(){
         
-        var no=$(this).parent().prev().prev().prev().prev().html();
-        var academyName=$(this).parent().prev().prev().prev().html();
-        var principal=$(this).parent().prev().prev().html();
-        var contact=$(this).parent().prev().html();
+        var no=$(this).parent().prev().prev().prev().prev().prev().html();
+        var academyName=$(this).parent().prev().prev().prev().prev().html();
+        var principal=$(this).parent().prev().prev().prev().html();
+        var contact=$(this).parent().prev().prev().html();
+        var address=$(this).parent().prev().html();
          htmledit=$.ajax({
           url:"academy_form/edit.php",
           type:"post",
@@ -24,7 +25,8 @@
           number:no,
           name:academyName,
           prin:principal,
-          con:contact
+          con:contact,
+          add:address
           },
           async:false,
           error : function(){ alert("error")},
@@ -98,6 +100,7 @@ require_once("../common/administer_nav.php");
       <th>名称</th>
       <th>负责人</th>
       <th>联系电话</th>
+      <th>地址</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -121,6 +124,7 @@ require_once("../common/administer_nav.php");
     '<td>'.$row['academyName'].'</td>'.
     '<td>'.$row['principal'].'</td>'.
     '<td>'.$row['contact'].'</td>'.
+    '<td>'.$row['address'].'</td>'.
     '<td>'.'<a class="btn edit " style="background-color:#eb9316;color:white">编辑</a>'.'<a class="btn btn-danger del">删除</a>'.'</td>';
     
 

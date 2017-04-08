@@ -41,7 +41,7 @@ require_once("../common/teacher_nav.php");
   $oldpw=$_POST['oldpw'];
   $newpw=$_POST['newpw'];
  if(isset($_POST['submit'])){
-  $query="UPDATE  teacher_account SET Tpassword = '$newpw'   where Tnumber=$Tnumber and Tpassword='$oldpw'; "; 
+  $query="UPDATE  teacher_account SET Tpassword = md5('$newpw')   where Tnumber=$Tnumber and Tpassword=md5('$oldpw'); "; 
  
   $data=mysqli_query($dbc,$query)
      or die("Error ");

@@ -41,7 +41,7 @@ require_once("../common/student_nav.php");
   $oldpw=$_POST['oldpw'];
   $newpw=$_POST['newpw'];
  if(isset($_POST['submit'])){
-  $query="UPDATE  student_account SET Spassword = '$newpw'   where Snumber=$number and Spassword='$oldpw'; "; 
+  $query="UPDATE  student_account SET Spassword = md5('$newpw')   where Snumber=$number and Spassword=md5('$oldpw'); "; 
  
   $data=mysqli_query($dbc,$query)
      or die("Error ");
