@@ -12,7 +12,14 @@
   $password=$_POST['password'];
   $user=$_POST['user'];
   setcookie('username',$username);
-  
+
+  //防止登录注入攻击
+  if(preg_match("/[ '.,:;*?`!@#$%^&+=)({}]|\]|\[|\/|\\\|\"|\|/",$username))
+  {echo '不要在名字里面整些特殊符号,请使用字母、数字和汉字！';
+exit();}
+ 
+  if(preg_match("/[ '.,:;*?`!@#$%^&+=)({}]|\]|\[|\/|\\\|\"|\|/",$username)){echo '不要在名字里面整些特殊符号,请使用字母、数字和汉字！';
+exit();}
 
   //登录身份是学生
   if("$user"=="student"){

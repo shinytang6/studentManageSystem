@@ -27,12 +27,13 @@ CREATE TABLE `academy` (
   `academyName` varchar(45) DEFAULT NULL,
   `principal` varchar(45) DEFAULT NULL,
   `contact` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
-  UNIQUE KEY `principal_UNIQUE` (`principal`),
   UNIQUE KEY `academyName_UNIQUE` (`academyName`),
-  UNIQUE KEY `contact_UNIQUE` (`contact`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `contact_UNIQUE` (`contact`),
+  UNIQUE KEY `address_UNIQUE` (`address`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +42,7 @@ CREATE TABLE `academy` (
 
 LOCK TABLES `academy` WRITE;
 /*!40000 ALTER TABLE `academy` DISABLE KEYS */;
-INSERT INTO `academy` VALUES (1,'电院','李老师','54236491'),(2,'机动','朱老师','54219249'),(3,'船建','王老师','57321642'),(4,'安泰','秦老师','54219346'),(5,'生科','孔老师','58234621'),(6,'化院','董老师','57316423'),(7,'物理','黄老师','54123642'),(8,'数院','石老师','58216433'),(9,'农生','马老师','57634987');
+INSERT INTO `academy` VALUES (1,'电院','李老师','54236491','电院群楼'),(2,'机动','朱老师','54219249','机动群楼'),(3,'船建','王老师','57321642','木兰楼'),(4,'安泰','秦老师','54219346','徐汇校区安泰主楼'),(5,'生科','孔老师','58234621','生科楼'),(6,'化院','董老师','57316423','化学楼'),(7,'物理','黄老师','54123642','物理楼'),(8,'数院','石老师','58216433','数学楼');
 /*!40000 ALTER TABLE `academy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +111,7 @@ CREATE TABLE `course` (
   `Csemester` varchar(45) NOT NULL,
   `Ccredit` int(11) NOT NULL,
   PRIMARY KEY (`Cno`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +120,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'数据库原理','马进','下院109','周一7-8 周五7-8','大二下',2),(2,'计算机组成与体系结构','陆海宁','中院207','周四1-2 周五3-4','大二下',3),(3,'模拟电子技术','秦鹏','下院105','周一1-2 周四3-4','大二下',3),(4,'工程热力学','陆飞','','','大一下',4),(5,'高等数学','王承国','上院106','周一1-2 周三1-2','大一下',4);
+INSERT INTO `course` VALUES (1,'数据库原理','张三','下院109','周一7-8 周五7-8','大二下',2),(2,'计算机组成与体系结构','陆海宁','中院207','周四1-2 周五3-4','大二下',3),(3,'模拟电子技术','秦鹏','下院105','周一1-2 周四3-4','大二下',3),(4,'工程热力学','陆飞','','','大一下',4),(5,'高等数学','王承国','上院106','周一1-2 周三1-2','大一下',4),(6,'编译原理','张三','下院107','周二3-4','大三下',3),(7,'线性代数','李四','下院205','周一3-4','大一下',3);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +144,7 @@ CREATE TABLE `course_student` (
 
 LOCK TABLES `course_student` WRITE;
 /*!40000 ALTER TABLE `course_student` DISABLE KEYS */;
-INSERT INTO `course_student` VALUES (1,'1',95),(1,'2',92),(1,'3',90),(2,'4',85),(1,'5',92);
+INSERT INTO `course_student` VALUES (1,'1',0),(1,'2',NULL),(1,'3',NULL),(2,'4',60),(1,'5',90),(2,'1',0),(1,'6',NULL),(1,'7',90);
 /*!40000 ALTER TABLE `course_student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,13 +156,14 @@ DROP TABLE IF EXISTS `major`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `major` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(100) NOT NULL AUTO_INCREMENT,
   `academyName` varchar(45) NOT NULL,
   `majorName` varchar(45) NOT NULL,
   `principal` varchar(45) NOT NULL,
   `contact` varchar(45) NOT NULL,
+  `address` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +172,7 @@ CREATE TABLE `major` (
 
 LOCK TABLES `major` WRITE;
 /*!40000 ALTER TABLE `major` DISABLE KEYS */;
-INSERT INTO `major` VALUES (1,'电院','信息安全','李老师','54236485'),(2,'电院','计算机与科学','王老师','51234567'),(3,'电院','软件工程','谭老师','54792134'),(4,'机动','工业工程','干老师','54782136');
+INSERT INTO `major` VALUES (1,'电院','信息安全','李老师','54236485','电院5号楼'),(2,'电院','计算机与科学','王老师','51234567','电院1号楼'),(3,'电院','软件工程','谭老师','54792134','电院3号楼'),(4,'机动','工业工程','干老师','54782136','机动1号楼'),(5,'机动','机械类','王老师','57821642','机动辅楼'),(6,'机动','机械试点班','唐老师','58725463','机动2号楼'),(7,'船建','土木工程','毛老师','54257165','木兰楼2楼'),(8,'船建','建筑学','陈老师','53148355','木兰楼1楼');
 /*!40000 ALTER TABLE `major` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +225,7 @@ CREATE TABLE `student_account` (
 
 LOCK TABLES `student_account` WRITE;
 /*!40000 ALTER TABLE `student_account` DISABLE KEYS */;
-INSERT INTO `student_account` VALUES (1,'Tang','123456'),(2,'liang','123456');
+INSERT INTO `student_account` VALUES (1,'Tang','202cb962ac59075b964b07152d234b70'),(2,'liang','123456');
 /*!40000 ALTER TABLE `student_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,8 +241,13 @@ CREATE TABLE `teacher` (
   `Tname` varchar(45) NOT NULL,
   `Tsex` varchar(45) NOT NULL,
   `Tdept` varchar(45) NOT NULL,
+  `Tedubg` varchar(45) NOT NULL,
+  `Tschool` varchar(45) NOT NULL,
+  `Ttel` int(11) NOT NULL,
+  `Temail` varchar(45) NOT NULL,
+  `Toffice` varchar(45) NOT NULL,
   PRIMARY KEY (`Tno`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,7 +256,7 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (1,'马进','女','计算机系');
+INSERT INTO `teacher` VALUES (1,'张三','男','计算机系','博士','上海交通大学',1512452154,'555@sjtu.edu.cn','电院5号楼'),(2,'李四','女','电子系','硕士','清华大学',1542155522,'215@sjtu.edu','电院3号楼');
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +281,7 @@ CREATE TABLE `teacher_account` (
 
 LOCK TABLES `teacher_account` WRITE;
 /*!40000 ALTER TABLE `teacher_account` DISABLE KEYS */;
-INSERT INTO `teacher_account` VALUES (1,'tl','123');
+INSERT INTO `teacher_account` VALUES (1,'tl','202cb962ac59075b964b07152d234b70');
 /*!40000 ALTER TABLE `teacher_account` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -287,4 +294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-30 19:50:11
+-- Dump completed on 2017-04-12 20:08:30
